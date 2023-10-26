@@ -60,14 +60,26 @@
 
 # SIGNUP
 - for sign up we salt the psw and then store all the info on db
+- we also check if user is already in db or not
 
 # MIDDLEWEAR
 - once user is login user shouldn't be able to login access again and when user is not authenticated user shouldn't be able to access profile page
 - through middlewear we can request before it is completed
 - if someone is not auth to visit profile page we cans top the user vefore it 
+- routing is always handled in middleware.ts
 
 # EXTRACTING DATA FROM TOKEN
 - at the time of login we injected alotof data in the token
 - We can extract that data from jwt we need the token secret which we have in env
 - we create a helper function from where we perform such functionality
 - userinfo route is created where we query the database
+- try to use await on every db query as it takes some time to fetch data from db
+
+# VERIFICATION
+- now there's two way you can verify the token you can either send the token in url as a param or you can send the token as part of somain  like - domain.com/token/sahsaf
+- the first was is used in CSC and the second approach is ususally used in SSC
+- We go with CSC approach first we create a helper where we intiate how will send the email via node mailer 
+- there we also create a token a random string to be stored in the db for that user and via this we'll validate if the eligible user has access the validtion form to open it or not
+- then we have a verifyEmail route where we validate the token and fetch the user with that token
+- once the token is found witht hat user means it is verified and so we'll reset the value in db for that user 
+3:19
