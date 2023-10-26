@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState,useEffect } from "react";
 import toast from "react-hot-toast";
+import ToasterLayout from "../component/ToasterLayout";
 
 export default function SignupPage() {
   const [user, setUser] = useState({
@@ -43,6 +44,8 @@ export default function SignupPage() {
   
 
   return (
+    <>
+    <ToasterLayout/>
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <h1 className="text-center text-white">Signup</h1>
       <hr />
@@ -113,5 +116,6 @@ export default function SignupPage() {
         </div>
       </main>
     </div>
+    </>
   );
 }

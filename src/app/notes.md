@@ -35,11 +35,39 @@
 - we can entery weight and styles for fonts
 - fonts are self hosted so we wont need to make any reques
 
+# Structure
+- for api we create a api folder with in app/users directory and then define the each endpoint as folder name and then a route.ts file containing the rest api logic
+- for pages route we create folder in the app directory with folder name as the route name which contain a file as page.js which renders the component
+
+
+# DB Setup
+- We created a user model where we define the user schema which we will save on the mongo db
+- then in what ever api you use db first you have to execute connect( from mongoose)
+- now you will import Users model from db config to make any query to the db
+
 # HOW TOKEN WORKS
 - from api we generate a token then the token is sent to the browser/email and also stored in the db
 - now in the verification part the api takes the token from browser/email and find the token in the db (in db it filter the user email which obv will be coming from api as a param and then with that email the associated token will be verified)
+
+# REQ AND RES
+- NextResponse and NextRequest objects provide us way to access params and other styff in the route
+- using NextResponse we can also fetch the cookies being stored in the browser
 
 # LOGIN
 - once the user is logged in the email and password are matched from db
 - we create a token and set it in user cookies (NOT IN LOCAL STORAGE)
 - we'll send the secure cookie to user and will verify it there 
+
+# SIGNUP
+- for sign up we salt the psw and then store all the info on db
+
+# MIDDLEWEAR
+- once user is login user shouldn't be able to login access again and when user is not authenticated user shouldn't be able to access profile page
+- through middlewear we can request before it is completed
+- if someone is not auth to visit profile page we cans top the user vefore it 
+
+# EXTRACTING DATA FROM TOKEN
+- at the time of login we injected alotof data in the token
+- We can extract that data from jwt we need the token secret which we have in env
+- we create a helper function from where we perform such functionality
+- userinfo route is created where we query the database
