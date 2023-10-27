@@ -83,3 +83,4 @@
 - then we have a verifyEmail route where we validate the token and fetch the user with that token
 - once the token is found witht hat user means it is verified and so we'll reset the value in db for that user 
 3:19
+- when somebody signup then we'll fire the email
